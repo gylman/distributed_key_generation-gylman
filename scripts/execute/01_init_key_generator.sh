@@ -2,13 +2,7 @@
 SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 source $SCRIPT_PATH/env.sh
 
-echo "DATA_PATH is set to: $DATA_PATH"
-
-# ❌ Do not remove the entire folder (Docker bind mount issue)
-# rm -rf $DATA_PATH  
-
-# ✅ Instead, remove only the contents
-rm -rf $DATA_PATH/*
+rm -rf $DATA_PATH
 
 echo "Initialize key generator" 
 
@@ -22,4 +16,3 @@ sed -i.temp "s|0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff8
 
 rm $CONFIG_FILE_PATH.temp
 rm $PRIVATE_KEY_PATH.temp
-
